@@ -44,7 +44,7 @@ export default function TabLayout() {
           elevation: 5,
         }
       }}
-    >
+      >
       <Tabs.Screen
         name='index'
         options={{

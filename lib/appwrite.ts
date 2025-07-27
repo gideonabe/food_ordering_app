@@ -1,12 +1,17 @@
 import { CreateUserParams, SignInParams } from "@/type";
 import { ErrorBoundary } from "expo-router";
-import { Account, Avatars, Client, Databases, ID, Query } from "react-native-appwrite"
+import { Account, Avatars, Client, Databases, ID, Query, Storage } from "react-native-appwrite"
 
 export const appwriteConfig = {
   endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT!,
   projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID!,
   databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID!,
+  bucketId: process.env.EXPO_PUBLIC_APPWRITE_BUCKET_ID!,
   userCollectionId: process.env.EXPO_PUBLIC_APPWRITE_USERCOLLECTION_ID!,
+  categoriesCollectionId: process.env.EXPO_PUBLIC_APPWRITE_CATEGORIESCOLLECTION_ID!,
+  menuCollectionId: process.env.EXPO_PUBLIC_APPWRITE_MENUCOLLECTION_ID!,
+  customizationsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_CUSTOMIZATIONSCOLLECTION_ID!,
+  menuCustomizationsCollectionId: process.env.EXPO_PUBLIC_APPWRITE_MENUCUSTOMIZATIONSCOLLECTION_ID!,
   platform: "com.deon.foodordering",
 }
 
@@ -20,6 +25,7 @@ client
 export const account = new Account(client);
 export const databases = new Databases(client);
 export const avatars = new Avatars(client);
+export const storage = new Storage(client)
 
 export const createUser = async ({email, password, name}: CreateUserParams) => {
   try {
